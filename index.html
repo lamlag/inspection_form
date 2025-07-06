@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Field Inspection Form</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h2>📋 Field Inspection Form</h2>
+    <form
+      id="inspectionForm"
+      method="POST"
+      enctype="multipart/form-data"
+      action="http://localhost:3000/submit"
+    >
+      <label for="name">Inspector Name</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="date">Date</label>
+      <input type="date" id="date" name="date" required />
+
+      <label for="time">Time</label>
+      <input type="time" id="time" name="time" required />
+
+      <label for="address">Address / Location</label>
+      <input type="text" id="address" name="address" required />
+
+      <label for="notes">Observations / Notes</label>
+      <textarea id="notes" name="notes" rows="4"></textarea>
+
+      <label for="photo">Take Photo</label>
+      <input
+        type="file"
+        id="photo"
+        name="photo"
+        accept="image/*"
+        capture="environment"
+        required
+      />
+
+      <label>Geolocation (Auto-filled)</label>
+      <button type="button" onclick="getLocation()">
+        📍 Get Current Location
+      </button>
+      <input
+        type="text"
+        id="latitude"
+        name="latitude"
+        placeholder="Latitude"
+        readonly
+        required
+      />
+      <input
+        type="text"
+        id="longitude"
+        name="longitude"
+        placeholder="Longitude"
+        readonly
+        required
+      />
+      <button onclick="sendToWhatsapp()">✅ Submit</button>
+    </form>
+
+    <script src="js/script.js"></script>
+    <script src="js/whatsup.js"></script>
+  </body>
+</html>
