@@ -1,67 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Field Inspection Form</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <h2>📋 Field Inspection Form</h2>
-    <form
-      id="inspectionForm"
-      method="POST"
-      enctype="multipart/form-data"
-    >
-      <label for="name">Inspector Name</label>
-      <input type="text" id="name" name="name" required />
 
-      <label for="date">Date</label>
-      <input type="date" id="date" name="date" required />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>House Inspection Form | Global Dreams Projects </title>
+  <!--link rel="icon" type="image/png" href="/img/favicon.png" /-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style></style>
+</head>
 
-      <label for="time">Time</label>
-      <input type="time" id="time" name="time" required />
+<body>
+  <div class="container">
+    <div class="form-element-container">
+      <div class="form-group">
+        <div style="width: 96%;">
+          <h1 class="ant-typography header-title"></h1>
+          <div class="image-container banner"><img src="img/gdlogo.png" class="" alt="Global Dreams Projects">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="header">
 
-      <label for="address">Address / Location</label>
-      <input type="text" id="address" name="address" required />
 
-      <label for="notes">Observations / Notes</label>
-      <textarea id="notes" name="notes" rows="4"></textarea>
+      <!--div class="logo-container">
+                <div class="logo">G</div>
+                <div class="logo-text">Global Dreams Projects</div>
+            </div-->
+      <div class="header-text">
+        <i class="fab fa-whatsapp whatsapp-icon"></i> House Inspection Form
+      </div>
+    </div>
 
-      <label for="photo">Take Photo</label>
-      <input
-        type="file"
-        id="photo"
-        name="photo"
-        accept="image/*"
-        capture="environment"
-        required
-      />
+    <div class="form-container">
+      <!--h1 class="form-title"> House Inspection Form</h1-->
+      <p class="form-description">
+        Please fill out all required fields. The information will be sent via
+        WhatsApp.
+      </p>
 
-      <label>Geolocation (Auto-filled)</label>
-      <button type="button" onclick="getLocation()">
-        📍 Get Current Location
-      </button>
-      <input
-        type="text"
-        id="latitude"
-        name="latitude"
-        placeholder="Latitude"
-        readonly
-        required
-      />
-      <input
-        type="text"
-        id="longitude"
-        name="longitude"
-        placeholder="Longitude"
-        readonly
-        required
-      />
-      <button onclick="sendToWhatsapp()">✅ Submit</button>
-    </form>
+      <form id="contactForm">
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label" for="firstName">
+              First Name <span class="required">*</span>
+            </label>
+            <input type="text" id="firstName" class="form-control" placeholder="Enter your first name" required />
+            <div class="error-message" id="firstNameError">
+              Please enter your first name
+            </div>
+          </div>
 
-    <script src="js/script.js"></script>
-    <script src="js/whatsup.js"></script>
-  </body>
+          <div class="form-group">
+            <label class="form-label" for="lastName">
+              Last Name <span class="required">*</span>
+            </label>
+            <input type="text" id="lastName" class="form-control" placeholder="Enter your last name" required />
+            <div class="error-message" id="lastNameError">
+              Please enter your last name
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="phone">
+              Cellphone <span class="required">*</span>
+            </label>
+            <input type="tel" id="phone" class="form-control" placeholder="Enter your 10-digit phone number" required
+              pattern="[0-9]{10}" />
+            <div class="error-message" id="phoneError">
+              Please enter a valid 10-digit phone number
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="idnumber">
+              RSA ID Number <span class="required">*</span>
+            </label>
+            <input type="idnumber" id="idnumber" class="form-control" placeholder="Enter your 13-digit RSA ID Number"
+              required pattern="[0-9]{13}" />
+            <div class="error-message" id="idnumberError">
+              Please enter your valid 13-digit RSA ID number
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label class="form-label" for="getLocationBtn">
+              Geolocation
+            </label>
+            <button type="button" id="getLocationBtn" class="location-btn">
+              <i class="fas fa-location-dot"></i> Get Current Location
+            </button>
+            <div class="geo-result" id="geoResult">
+              Location data will appear here
+            </div><label class="form-label"></label>
+            <label class="form-label" for="getLocationBtn">
+              Cordinates:
+            </label>
+            <!--input type="hidden" id="latitude" /-->
+            <!--input type="hidden" id="longitude" /-->
+            <input type="text" id="latitude" class="form-control name=" latitude" placeholder="Latitude" readonly
+              required />
+            <input type="text" id="longitude" class="form-control name=" longitude" placeholder="Longitude" readonly
+              required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="physicalLocation">
+              Physical Address <span class="required">*</span>
+            </label>
+            <input type="text" id="physicalLocation" class="form-control" placeholder="Enter your full address"
+              required />
+            <div class="error-message" id="locationError">
+              Please enter your physical address
+            </div>
+            <label class="form-label"> </label>
+            <label class="form-label" for="category">
+              Province <span class="required">*</span>
+            </label>
+            <select id="category" class="form-control" required>
+              <option value="">Select a province</option>
+              <option value="Eastern Cape">Eastern Cape</option>
+              <option value="Free State">Free State</option>
+              <option value="Gauteng">Gauteng</option>
+              <option value="KwaZulu Natal">KwaZulu Natal</option>
+              <option value="Limpopo">Limpopo</option>
+              <option value="Mpumalanga">Mpumalanga</option>
+              <option value="North West">North West</option>
+              <option value="Northern Cape">Northern Cape</option>
+              <option value="Western Cape">Western Cape</option>
+            </select>
+            <div class="error-message" id="categoryError">
+              Please select a province
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">
+              Do you have an NHBRC Builder <span class="required">*</span>
+            </label>
+            <div class="radio-group">
+              <div class="radio-option">
+                <input type="radio" id="optionOther" name="serviceType" value="Yes" required />
+                <label for="optionOther">Yes</label>
+              </div>
+              <div class="radio-option">
+                <input type="radio" id="optionA" name="serviceType" value="No" />
+                <label for="optionA">No</label>
+              </div>
+            </div>
+            <div class="error-message" id="serviceTypeError">
+              Please make an NHBRC builder selection
+            </div>
+            <div class="other-comment" id="otherComment">
+              <input type="text" id="otherText" class="form-control" placeholder="If Yes Please provide NHBRC Number" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="date">
+              Date <span class="required">*</span>
+            </label>
+            <input type="datetime-local" id="date" class="form-control" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="photo"> Add a Photo </label>
+            <div class="file-upload">
+              <label for="photo" class="file-upload-btn">
+                <i class="fas fa-camera"></i> Choose Photo
+              </label>
+              <input type="file" id="photo" accept="image/*" style="display: none" />
+              <div class="file-name" id="photoName"></div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="document"> Add a Document </label>
+            <div class="file-upload">
+              <label for="document" class="file-upload-btn">
+                <i class="fas fa-file-pdf"></i> Choose Document (PDF, DOC)
+              </label>
+              <input type="file" id="document" accept=".pdf,.doc,.docx" style="display: none" />
+              <div class="file-name" id="documentName"></div>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-submit">
+          <div class="spinner" id="spinner"></div>
+          <i class="fab fa-whatsapp"></i> Submit via WhatsApp
+        </button>
+
+        <div class="success-message" id="successMessage">
+          <i class="fas fa-check-circle"></i> Form submitted successfully!
+          Opening WhatsApp...
+        </div>
+      </form>
+
+      <div class="form-footer">
+        <p>
+          Your information is secured and will only be used for communication
+          purposes.
+        </p>
+        <p>© 2025 Global Dreams Project. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+
 </html>
