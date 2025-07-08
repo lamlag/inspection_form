@@ -259,7 +259,7 @@ function prepareWhatsAppMessage() {
   message += `*Date:* ${formData.date.replace("T", " ")}%0A`;
   message += `*Physical Location:* ${formData.physicalLocation}%0A`;
   message += `*Province:* ${formData.category}%0A`;
-  message += `*Service Type:* ${formData.serviceType}`;
+  message += `*NHBRC Builder?:* ${formData.serviceType}`;
 
   if (formData.otherComment) {
     message += ` (${formData.otherComment})`;
@@ -283,7 +283,7 @@ function prepareWhatsAppMessage() {
   }
 
   // WhatsApp number - replace with your actual number (without +, spaces or dashes)
-  const whatsappNumber = "0828796515";
+  const whatsappNumber = "+27646945160";
 
   // Create WhatsApp URL
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}&file=${photoFile}&file=${sphoto}`;
